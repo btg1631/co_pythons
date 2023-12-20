@@ -27,35 +27,35 @@ def problems_main(questions) :      # hint  function 이름 수정
         #답을 정수로 변환하고 결과 반환
         input_temp = [int(i) for i in list_results]
 
-    # 점수 합계/학점 출력 function
-    def total_responses(score):
+    return input_temp
 
-        # 문제 당 점수
-        score_temp = [10, 15, 10, 5]
-        score = 0
+# 점수 합계/학점 출력 function
+def total_responses(score):
 
-        # 점수 합계
-        for i in range(len(input_temp)):
-            if list_corrects[i] == input_temp[i]:
-                score += score_temp[i]
+    # 문제 당 점수
+    score_temp = [10, 15, 10, 5]
+    score = 0
 
-        # 학점 기준 : 
-        # A : 30 이상, B : 20 점 이상,  F : 20점 미만 
-        if score >= 30:
-            score_result = "A"
-        elif score >= 20:       # hint  else를 elif로 수정
-            score_result = "B"
-        else:
-            score_result = "F"
-        
-        # 결과 출력
-        print("—----- 결과 —-------------")
-        print("응답한 내용 : 1번 {}, 2번 {}, 3번 {}, 4번 {}".format(input_temp[0], input_temp[1], input_temp[2], input_temp[3]))
-        print("당신 응답 합계 : {}점".format(score))
-        print("학점은 {} 입니다.".format(score_result))
-        return 
+    # 점수 합계
+    for i in range(len(input_temp)):
+        if list_corrects[i] == input_temp[i]:
+            score += score_temp[i]
+
+    # 학점 기준 : 
+    # A : 30 이상, B : 20 점 이상,  F : 20점 미만 
+    if score >= 30:
+        score_result = "A"
+    elif score >= 20:       # hint  else를 elif로 수정
+        score_result = "B"
+    else:
+        score_result = "F"
     
-    return total_responses(input_temp)
+    # 결과 출력
+    print("—----- 결과 —-------------")
+    print("응답한 내용 : 1번 {}, 2번 {}, 3번 {}, 4번 {}".format(input_temp[0], input_temp[1], input_temp[2], input_temp[3]))
+    print("당신 응답 합계 : {}점".format(score))
+    print("학점은 {} 입니다.".format(score_result))
+
     
 if __name__ == "__main__":
     # 출제 문제
@@ -72,6 +72,5 @@ if __name__ == "__main__":
     # 문제 당 정답
     list_corrects = [2, 1, 1, 2]    # hint  정답 추가
 
-
-    problems_main(list_problems)
-
+    input_temp = problems_main(list_problems)
+    total_responses(input_temp)
