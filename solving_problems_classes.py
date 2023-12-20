@@ -36,25 +36,25 @@ class Statistics:
         input_temp = [int(i) for i in input_temp]
         # 문제 당 점수
         score_temp = [10, 15, 10, 5]        # hint
-        score = 0               # hint
+        self.score = 0               # hint     self 추가
 
         # 점수 합계
         for i in range(len(input_temp)):
             if list_corrects[i] == input_temp[i]:
-                score += score_temp[i]
+                self.score += score_temp[i]
 
         print("—----- 결과 —-------------")
         print("응답한 내용 : 1번 {}, 2번 {}, 3번 {}, 4번 {}".format(input_temp[0], input_temp[1], input_temp[2], input_temp[3]))
-        print("당신 응답 합계 : {}점".format(score))
+        print("당신 응답 합계 : {}점".format(self.score))
 
-        self.credit_result(score)
+        self.credit_result()
 
-    def credit_result(self, score):     # 학점 출력
+    def credit_result(self):     # 학점 출력
 
         # 학점 기준 | A : 30 이상, B : 20 점 이상,  F : 20점 미만 
-        if score >= 30:
+        if self.score >= 30:
             score_result = "A"
-        elif score >= 20:
+        elif self.score >= 20:
             score_result = "B"
         else:
             score_result = "F"
